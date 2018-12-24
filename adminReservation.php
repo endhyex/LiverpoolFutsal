@@ -14,13 +14,13 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item">
-      <a class="nav-link" href="#" style="margin-left:20px">Home</a>
+      <a class="nav-link" href="adminHome.php" style="margin-left:20px">Home</a>
     </li>
     <li class="nav-item active">
       <a class="nav-link" href="#" style="margin-left:40px">Reservation</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#" style="margin-left:40px">Transaction</a>
+      <a class="nav-link" href="adminTransaction.php" style="margin-left:40px">Transaction</a>
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">
@@ -31,7 +31,29 @@
 <div class="container">
 <br><br>
 <h2 class="form-heading">Add new reservation</h2>
-</div>
+<br>
+    <form id="Reservation">
+        <div class="form-group">
+            <input type="text" class="form-control" id="inputName" placeholder="Full name" required>
+        </div>
+		<div class="form-group">
+            <input type="text" class="form-control" id="input" placeholder="Full name" required>
+        </div>
+		<div class="form-group">
+            <input type="text" class="form-control" id="inputName" placeholder="Full name" required>
+        </div>
+		<div class="form-group">
+            <input type="text" class="form-control" id="inputName" placeholder="Full name" required>
+        </div>
+		<div class="form-group">
+            <input type="text" class="form-control" id="inputName" placeholder="Full name" required>
+        </div>
+		<div class="form-group">
+            <input type="text" class="form-control" id="inputName" placeholder="Full name" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Reserve!</button>
 
+    </form>
+</div>
 </body>
 </html>

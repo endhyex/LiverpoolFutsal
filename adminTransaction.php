@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Liverpool Futsal - Home</title>
+  <title>Liverpool Futsal - Reservation</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -13,14 +13,14 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
   <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-      <a class="nav-link" href="#" style="margin-left:20px">Home</a>
+    <li class="nav-item">
+      <a class="nav-link" href="adminHome.php" style="margin-left:20px">Home</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="adminReservation.php" style="margin-left:40px">Reservation</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="adminTransaction.php" style="margin-left:40px">Transaction</a>
+    <li class="nav-item active">
+      <a class="nav-link" href="#" style="margin-left:40px">Transaction</a>
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">
@@ -30,7 +30,7 @@
 </nav>
 <div class="container">
 <br><br>
-<h1 class="text-dark text-center">Welcome, Administrator!</h1>
+<h2 class="form-heading">Transaction</h2>
 </div>
 
 </body>

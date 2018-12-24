@@ -6,10 +6,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script><!------ Include the above in your HEAD tag ---------->
   </head>
-<body id="LoginForm">
+<body id="LoginAdminForm">
 <div class="container">
 <br><br>
-<h1 class="form-heading">Login</h1>
+<h1 class="form-heading">Login as admin</h1>
 <div class="login-form">
 <div class="main-div">
     <div class="panel">
@@ -18,18 +18,15 @@
     <form id="Login">
 
         <div class="form-group">
-            <input type="email" class="form-control" id="inputEmail" placeholder="Email Address" required>
+            <input type="text" class="form-control" id="inputAdmin" placeholder="Admin Username" required>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Admin Password" required>
         </div>
 		
         <button type="submit" class="btn btn-primary">Login</button>
 
     </form>
-	<form method="post" action="adminLogin.php">
-	<button type="submit" class="btn btn-sm">Login as admin</button>
-	</form>
     </div>
 </div></div></div>
 
