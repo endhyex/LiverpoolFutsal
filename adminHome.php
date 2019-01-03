@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Liverpool Futsal - Home</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Liverpool Futsal Depok</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="res/css/style.css">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-      <a class="nav-link" href="#" style="margin-left:20px">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="adminReservation.php" style="margin-left:40px">Reservation</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="adminTransaction.php" style="margin-left:40px">Transaction</a>
-    </li>
-  </ul>
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item active">
-      <a class="text-info" style="margin-right:10px">Logged in as Administrator</a>
-  </ul>
-</nav>
-<div class="container">
-<br><br>
-<h1 class="text-dark text-center">Welcome, Administrator!</h1>
-</div>
+    <div class="site-content">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+                <a href="adminHome.php" class="nav-brand ml-3 mr-3">
+                <img src="res/img/liverpool-logo.png" width="100" height="57" class="d-inline-block align-top" alt=""> </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="adminTransaction.php" style="margin-right:20px">Transaction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="adminPrice.php" style="margin-right:20px">Price List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="adminField.php" style="margin-right:20px">Field</a>
+                    </li>
+                </ul>
 
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="margin-right:40px">Logout</a>
+                    </li>           
+                </ul>
+            </nav>
+        </header>
+
+        <div class="landing-text ml-5">
+            <h1 >Welcome, Administrator!</h1>
+        </div>
+        
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
 </html>
