@@ -1,0 +1,35 @@
+create table customer (
+id serial  not null primary key,
+name text not null, 
+phonenum text  not null,
+username text  not null,
+password text not null,
+role text not null default user
+);
+
+create table field(
+fieldnum int unique,
+tipe text not null,
+);
+
+insert into field values
+(1,'Sintetis'),
+(2,'Finil'),
+(3,'Sintetis'),
+(4,'Finil');
+
+create table booking(
+id int not null,
+tgl date not null,
+start int not null,
+end int not null,
+duration int not null,
+field int not null,
+foreign key (id) references customer (id),
+foreign key (field) references field(fieldnum),
+status varchar(30) not null default 'Waiting for Confirmation';
+);
+
+insert into booking values 
+(5,'2019-01-02',10,12,2,1);
+
