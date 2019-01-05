@@ -50,7 +50,7 @@
 				<div class="col-xs-12 col-sm-6">
 				
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Pencarian..." id="keyword">
+						<input type="text" class="form-control" placeholder="Search by date/name/phonenum/field/status" id="keyword">
 						
 						<span class="input-group-btn">
 							<button class="btn btn-primary" style="margin-left:5px" type="button" id="btn-search">SEARCH</button>

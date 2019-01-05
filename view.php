@@ -40,9 +40,9 @@
 						<td class="align-middle"><?php echo $data['tgl']; ?></td>
 						<td class="align-middle"><?php echo $data['username']; ?></td>
 						<td class="align-middle"><?php echo $data['phonenum']; ?></td>
-						<td class="align-middle"><?php echo $data['start']; ?></td>
-						<td class="align-middle"><?php echo $data['end']; ?></td>
-						<td class="align-middle"><?php echo $data['duration']; ?></td>
+						<td class="align-middle"><?php echo $data['start']; ?>.00</td>
+						<td class="align-middle"><?php echo $data['end']; ?>.00</td>
+						<td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
 						<td class="align-middle"><?php echo $data['tipe']; ?></td>
 						<td class="align-middle"><?php echo $data['status']; ?></td>
 					</tr></tbody>
