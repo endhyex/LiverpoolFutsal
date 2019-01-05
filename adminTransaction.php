@@ -60,6 +60,7 @@
 			-- col-sm-6 artinya jika ukuran layar >= 768px, maka gunakan 6 kolom
 			-- Untuk lebih jelasnya soal Grid, silahkan buka link ini : http://viid.me/qb4V8P
 			-->
+            <br>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6">
 					<!--
