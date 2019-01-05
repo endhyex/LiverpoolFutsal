@@ -1,3 +1,3 @@
 <?php
-$db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
+$db_connection = mysqli_connect("localhost", "root","", "liverpool");
 ?>
