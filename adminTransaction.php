@@ -40,6 +40,35 @@
         <div class="landing-text ml-5 mt-3">
             <h1>Transaction Data</h1>
         </div>
+
+        <?php
+        
+        $result = mysqli_query($db_connection, 'select * from booking');
+        echo
+        '<table>
+          <tr>
+            <th>ID</th>
+            <th>Tgl</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Duration</th>
+            <th>Field</th>
+            <th>Status</th>
+          </tr>';
+        if($result){
+            while($row = mysqli_fetch_array($result)){
+            echo "<tr><td>".$row['id']."</td>
+            <td>".$row['tgl']."</td>
+            <td>".$row['start']."</td>
+            <td>".$row['end']."</td>
+            <td>".$row['duration']."</td>
+            <td>".$row['field']."</td>
+            <td>".$row['status']."</td>
+            </tr>";
+            }
+            echo "</table>";
+        }
+        ?>
         
     </div>
 

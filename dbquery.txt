@@ -1,9 +1,9 @@
-create table customer (
-id serial  not null primary key,
 Server: 127.0.0.1:3306
 Database & user: u469595974_sbd
 password: sbdkelas1234
 
+create table customer (
+id serial  not null primary key,
 name text not null, 
 phonenum text  not null,
 username text  not null,
