@@ -19,6 +19,9 @@
                 <img src="res/img/liverpool-logo.png" width="100" height="57" class="d-inline-block align-top" alt=""> </a>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
+                        <a class="nav-link" href="adminVerify.php" style="margin-right:20px">Verification</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="adminTransaction.php" style="margin-right:20px">Transaction</a>
                     </li>
                     <li class="nav-item">
