@@ -11,26 +11,18 @@ inner join field on field.fieldnum=booking.id order by ".$columnName." ".$sort."
 $result = mysqli_query($db_connection,$select_query);
 
 $html = '';
-while($row = mysqli_fetch_array($result)){
-    $tgl = $row['tgl'];
-    $username = $row['username'];
-    $phonenum = $row['phonenum'];
-    $start = $row['start'];
-    $end = $row['end'];
-    $duration = $row['duration'];
-    $tipe = $row['tipe'];
-    $status = $row['status'];
-
-    $html .= "<tr>
-    <td>".$tgl."</td>
-    <td>".$username."</td>
-    <td>".$phonenum."</td>
-    <td>".$start."</td>
-    <td>".$end."</td>
-    <td>".$duration."</td>
-    <td>".$tipe."</td>
-    <td>".$status."</td>
-    </tr>";
-}
-
-echo $html;
+while($data = mysqli_fetch_array($result)){ 
+    ?>
+        <tbody><tr>
+            <td class="align-middle"><?php echo $data['tgl']; ?></td>
+            <td class="align-middle"><?php echo $data['username']; ?></td>
+            <td class="align-middle"><?php echo $data['phonenum']; ?></td>
+            <td class="align-middle"><?php echo $data['start']; ?>.00</td>
+            <td class="align-middle"><?php echo $data['end']; ?>.00</td>
+            <td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
+            <td class="align-middle"><?php echo $data['tipe']; ?></td>
+            <td class="align-middle"><?php echo $data['status']; ?></td>
+        </tr></tbody>
+    <?php
+    }
+    ?>
