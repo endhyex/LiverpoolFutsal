@@ -18,7 +18,7 @@ $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top"    >
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top">
             <a href="index.php" class="nav-brand ml-3 mr-3">
             <img src="res/img/liverpool-logo.png" width="100" height="57" class="d-inline-block align-top" alt=""> </a>
 
