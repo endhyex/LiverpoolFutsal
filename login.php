@@ -1,5 +1,11 @@
 <?php
 $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
+
+session_start();
+if(!empty($_SESSION['username'])){
+	header("location: home.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +38,7 @@ $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
         </nav>
     </header>
 
-    <div class="container ml-3 mr-8 mt-3">
+    <div class="container ml-6 mr-8 mt-3">
         <h1 class="form-heading">Login</h1>
             <form action="login.php" method="POST">
                 <div class="form-group">
@@ -59,6 +65,8 @@ $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
         if($num_rows>0){
             $data = mysqli_fetch_assoc($query_run);
             if(password_verify($password, $data['password'])){
+                session_start();
+                $_SESSION['username'] = $username;
                 header("location:home.php");
             }else{
                 echo 'wrong password';              

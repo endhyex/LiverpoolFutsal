@@ -1,5 +1,10 @@
 <?php
 $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
+
+session_start();
+if(empty($_SESSION['username'])){
+	header("location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -53,48 +58,50 @@ $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
         <h1>Reservation</h1>
         <p>Search for available field</p>
 
-        <label class= "mt-3"for="">Insert Date</label>
-        <form action="home.php" method="post">
-            <input type="date" class="form-control" name="date" required>
-        
-            <div class="form-group mt-3">
-                <label> Select Field </label>
-                <select name = "field" class="form-control" required>
-                    <option disabled>--select field--</option>
-                    <option value="1">Field 1</option>
-                    <option value="2">Field 2</option>
-                    <option value="3">Field 3</option>
-                    <option value="4">Field 4</option>
-                </select>   
+
+        <form action="home.php" method="POST" class="form-inline">
+            <div class="form-group mb-2">
+                <input type="date" class="form-control" name="date" required>
             </div>
             
-            <input type="submit"  class="btn btn-primary mt-1" name="date_search" value="Search!">
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group">
+                        <select name = "field" class="form-control" required>
+                            <option disabled>--select field--</option>
+                            <option value="1">Field 1</option>
+                            <option value="2">Field 2</option>
+                            <option value="3">Field 3</option>
+                            <option value="4">Field 4</option>
+                        </select>   
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2" name="date_search">Search!</button>
         </form>
     </div>
-
-    <h1 class="ml-4 mt-5">Reserved</h1>
-    <div class="card border-primary mt-3 ml-4 mb-3 shadow-sm" style="max-width: 60%;">
-    <div class="card-body ml-1">
-        <h5 class="card-title">10.00 - 12.00</h5>
-        <p class="card-text">Status: Waiting for Confirmation</p>        
-    </div>
-    </div>
-    <div class="card border-primary mt-3 ml-4 mb-3" style="max-width: 60%;">
-    <div class="card-body ml-1">
-        <h5 class="card-title">13.00 - 15.00</h5>
-        <p class="card-text">Status: Booked</p>        
-    </div>
-    </div>
-
 
     <?PHP
     if (isset($_POST['date_search'])){
         $field = $_POST['field'];
         $date = $_POST['date'];
-        $query = "select * from booking where tgl = '$date' and field=$field;";
-        $query_run = mysqli_query($db_connection,$query);
-        $num_rows=mysqli_num_rows($query_run);      
-    }
+        
+
+        $time = strtotime($date);
+        $now = date('Y-m-d');
+        $newformat = date('l\, F jS Y',$time);
+
+        $day = floor(($time - time())/86400);
+        if($day+1 <0 || $day+1 > 7){
+            echo'
+            <div class="alert alert-danger mt-3 ml-4 mb-1" style="max-width: 60%" role="alert">
+            <h5 class="alert-heading">Invalid date!</h5>
+            Please insert date within 7 days ahead from today!
+            </div>
+            ';
+        }else{
+            header("location: search.php?date=".$date."&field=".$field);
+        }
+        echo '</div>';
+    } 
     ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
