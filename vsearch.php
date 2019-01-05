@@ -2,7 +2,7 @@
 $keyword = $_POST['keyword']; 
 
 ob_start();
-include "view.php";
+include "verifView.php";
 $html = ob_get_contents(); 
 ob_end_clean();
 

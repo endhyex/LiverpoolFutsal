@@ -1,15 +1,22 @@
+Server: 127.0.0.1:3306
+Database & user: u469595974_sbd
+password: sbdkelas1234
+
 create table customer (
 id serial  not null primary key,
 name text not null, 
 phonenum text  not null,
 username text  not null,
 password text not null,
-role text not null default user
+role varchar(30) not null default 'user'
 );
 
+insert into customer (name,phonenum,username,password) values
+('Frenzel Timothy', '081310695040', 'frenzelts', 'password'); 
+
 create table field(
-fieldnum int unique,
-tipe text not null,
+fieldnum int primary key,
+tipe text not null
 );
 
 insert into field values
@@ -19,17 +26,49 @@ insert into field values
 (4,'Finil');
 
 create table booking(
-id int not null,
+transnum serial primary key,
+id int not null references customer (id),
 tgl date not null,
 start int not null,
 end int not null,
 duration int not null,
-field int not null,
-foreign key (id) references customer (id),
-foreign key (field) references field(fieldnum),
-status varchar(30) not null default 'Waiting for Confirmation';
+field int not null references field(fieldnum),
+status varchar(30) not null default 'Waiting for Confirmation'
 );
 
-insert into booking values 
-(5,'2019-01-02',10,12,2,1);
+insert into booking (id, tgl, start, end, duration, field)
+values (1, '2019-01-02',10, 12, 2, 1);
 
+create table price(
+priceid int not null,
+hari text not null,
+start int not null,
+end int not null,
+price int not null);
+
+insert into customer (name,phonenum,username,password) values
+('DP Nala', '08111111', 'dpnala', 'password'),
+('Hapisz', '08122111', 'hafidz', 'password'),
+('Zidan', '08113311', 'zidan', 'password'),
+('Endi', '08144411', 'ndidi', 'password');
+
+insert into booking (id, tgl, start, end, duration, field) values 
+(1, '2019-01-02',10, 12, 2, 1),
+(2, '2019-01-02',12, 14, 2, 2),
+(3, '2019-01-02',18, 21, 3, 1),
+(4, '2019-01-03',11, 12, 1, 3),
+(5, '2019-01-03',10, 13, 3, 4),
+(1, '2019-01-04',11, 12, 1, 2),
+(2, '2019-01-06',11, 13, 2, 3),
+(3, '2019-01-06',11, 13, 2, 1);
+
+
+----------------------------------------------------------------------------
+coba coba
+----------------------------------------------------------------------------
+
+select tgl, username, phonenum, start, end, duration, tipe, status from booking inner join customer on customer.id=booking.id
+inner join field on field.fieldnum=booking.id;
+
+SELECT COUNT(*) AS jumlah FROM booking inner join customer on customer.id=booking.id
+inner join field on field.fieldnum=booking.id WHERE username LIKE 'frenzelts' OR tgl LIKE 'frenzelts' OR field LIKE 'frenzelts' OR phonenum like 'frenzelts' status LIKE 'frenzelts' order by tgl desc;

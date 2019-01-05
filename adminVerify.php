@@ -22,10 +22,10 @@
                 <a href="adminHome.php" class="nav-brand ml-3 mr-3">
                 <img src="res/img/liverpool-logo.png" width="100" height="57" class="d-inline-block align-top" alt=""> </a>
                 <ul class="navbar-nav mr-auto">
-					<li class="nav-item">
+					<li class="nav-item active">
                         <a class="nav-link" href="adminVerify.php" style="margin-right:20px">Verification</a>
                     </li>
-					<li class="nav-item active">
+					<li class="nav-item">
                         <a class="nav-link" href="adminTransaction.php" style="margin-right:20px">Transaction</a>
                     </li>
                     <li class="nav-item">
@@ -45,13 +45,10 @@
         </header>
 
 		<div class="landing-text ml-5 mt-3">
-            <h1>Transaction Data</h1>
-			
+            <h1>Verify Reservation</h1>
             <br>
-            
 			<div class="row">
 				<div class="col-xs-12 col-sm-6">
-				
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search by date/name/phonenum/field/status" id="keyword">
 						
@@ -63,7 +60,7 @@
 				</div>
 			</div>
 			<br>
-            <div class="site-content" id="view"><?php include "view.php"; ?></div>
+            <div class="site-content" id="view"><?php include "verifView.php"; ?></div>
 		</div>
         
 		
