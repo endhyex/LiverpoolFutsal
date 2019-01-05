@@ -1,5 +1,9 @@
 create table customer (
 id serial  not null primary key,
+Server: 127.0.0.1:3306
+Database & user: u469595974_sbd
+password: sbdkelas1234
+
 name text not null, 
 phonenum text  not null,
 username text  not null,
@@ -7,9 +11,12 @@ password text not null,
 role text not null default user
 );
 
+insert into customer (name,phonenum,username,password) values
+('Frenzel Timothy', '081310695040', 'frenzelts', 'password'); 
+
 create table field(
 fieldnum int unique,
-tipe text not null,
+tipe text not null
 );
 
 insert into field values
@@ -19,17 +26,15 @@ insert into field values
 (4,'Finil');
 
 create table booking(
-id int not null,
+id int not null references customer (id),
 tgl date not null,
 start int not null,
 end int not null,
 duration int not null,
-field int not null,
-foreign key (id) references customer (id),
-foreign key (field) references field(fieldnum),
-status varchar(30) not null default 'Waiting for Confirmation';
+field int not null references field(fieldnum),
+status varchar(30) not null default 'Waiting for Confirmation'
 );
 
-insert into booking values 
-(5,'2019-01-02',10,12,2,1);
+insert into booking (id, tgl, start, end, duration, field)
+values (1, '2019-01-02',10, 12, 2, 1);
 
