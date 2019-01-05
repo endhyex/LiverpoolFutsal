@@ -60,7 +60,7 @@
 				</div>
 			</div>
 			<br>
-            <div id="view"><?php include "view.php"; ?></div>
+            <div class="site-content" id="view"><?php include "view.php"; ?></div>
 		</div>
         
 		

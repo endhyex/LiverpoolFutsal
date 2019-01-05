@@ -2,16 +2,17 @@
 
 	<input type='hidden' id='sort' value='asc'>
 	<div class="table-responsive">
-		<table class="table table-bordered table-striped" id='empTable'>
+		<table class="table table-bordered table-striped" id='empTable' >
 			<thead><tr>
-			<th style="padding-right:40px"><span onclick='sortTable("tgl");'>Date</span></th>
-				<th style="padding-right:90px"><span onclick='sortTable("username");'>Username</span></th>
-				<th style="padding-right:90px"><span onclick='sortTable("phonenum");'>Phone Number</span></th>
-				<th style="padding-right:40px"><span onclick='sortTable("start");'>Start</span></th>
-				<th style="padding-right:40px"><span onclick='sortTable("end");'>End</span></th>
-				<th style="padding-right:40px"><span onclick='sortTable("duration");'>Duration</span></th>
-				<th style="padding-right:90px"><span onclick='sortTable("tipe");'>Field</span></th>
-				<th style="padding-right:90px"><span onclick='sortTable("status");'>Status</span></th>
+			<th><span onclick='sortTable("tgl");'>Date</span></th>
+				<th><span onclick='sortTable("username");'>Username</span></th>
+				<th ><span onclick='sortTable("phonenum");'>Phone Number</span></th>
+				<th><span onclick='sortTable("start");'>Start</span></th>
+				<th><span onclick='sortTable("end");'>End</span></th>
+				<th><span onclick='sortTable("duration");'>Duration</span></th>
+				<th><span onclick='sortTable("tipe");'>Field</span></th>
+				<th><span onclick='sortTable("status");'>Status</span></th>
+				<th>Action</th>
 			</tr></thead>
 			<?php
 			include "dbConnect.php";
@@ -20,14 +21,14 @@
 			if(isset($_POST['search']) && $_POST['search'] == true){ 
 				$param = '%'.mysqli_real_escape_string($db_connection, $keyword).'%';
 				
-				$sql = mysqli_query($db_connection, "SELECT tgl, username, phonenum, start, end, duration, tipe, status from booking inner join customer on customer.id=booking.id
+				$sql = mysqli_query($db_connection, "SELECT transnum, tgl, username, phonenum, start, end, duration, tipe, status from booking inner join customer on customer.id=booking.id
 				inner join field on field.fieldnum=booking.id WHERE username LIKE '".$param."' OR tgl LIKE '".$param."' OR tipe LIKE '".$param."' OR phonenum like '".$param."' OR status LIKE '".$param."' order by tgl desc");
 				
 				$sql2 = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlah FROM booking inner join customer on customer.id=booking.id
 				inner join field on field.fieldnum=booking.id WHERE username LIKE '".$param."' OR tgl LIKE '".$param."' OR tipe LIKE '".$param."' OR phonenum like '".$param."' OR status LIKE '".$param."' order by tgl desc");
 				$get_jumlah = mysqli_fetch_array($sql2);
 			}else{ 
-				$sql = mysqli_query($db_connection, "select tgl, username, phonenum, start, end, duration, tipe, status from booking inner join customer on customer.id=booking.id
+				$sql = mysqli_query($db_connection, "select transnum, tgl, username, phonenum, start, end, duration, tipe, status from booking inner join customer on customer.id=booking.id
 				inner join field on field.fieldnum=booking.id order by tgl desc");
 				
 				$sql2 = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlah FROM booking");
@@ -45,6 +46,7 @@
 						<td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
 						<td class="align-middle"><?php echo $data['tipe']; ?></td>
 						<td class="align-middle"><?php echo $data['status']; ?></td>
+						<td class="align-middle"><a href="delete.php?transnum=<?php echo $data['transnum']; ?>">Delete</a></td>
 					</tr></tbody>
 				<?php
 				}
@@ -74,4 +76,3 @@
             });
         }
     </script>
-
