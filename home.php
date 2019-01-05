@@ -23,7 +23,7 @@ if(empty($_SESSION['username'])){
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top"    >
             <a href="index.php" class="nav-brand ml-3 mr-3">
             <img src="res/img/liverpool-logo.png" width="100" height="57" class="d-inline-block align-top" alt=""> </a>
 
@@ -98,7 +98,7 @@ if(empty($_SESSION['username'])){
             </div>
             ';
         }else{
-            header("location: search.php?date=".$date."&field=".$field);
+            header("location: searchbooking.php?date=".$date."&field=".$field);
         }
         echo '</div>';
     } 

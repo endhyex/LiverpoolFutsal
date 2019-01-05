@@ -27,12 +27,13 @@ insert into field values
 
 create table booking(
 transnum serial primary key,
-id int not null references customer (id),
+username text not null references customer (username),
 tgl date not null,
 start int not null,
 end int not null,
 duration int not null,
 field int not null references field(fieldnum),
+price int not null,
 status varchar(30) not null default 'Waiting for Confirmation'
 );
 

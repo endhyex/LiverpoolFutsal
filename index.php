@@ -1,3 +1,12 @@
+<?php
+$db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
+
+session_start();
+if(!empty($_SESSION['username'])){
+	header("location: home.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
