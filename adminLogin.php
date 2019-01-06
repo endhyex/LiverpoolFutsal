@@ -1,5 +1,10 @@
 <?php
-$db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
+include "dbConnect.php";
+
+session_start();
+if(!empty($_SESSION['inputAdmin'])){
+	header("location: adminHome.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,21 +43,44 @@ $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
     <div class="panel">
    <p>Please enter your email and password</p>
    </div>
-    <form id="Login">
+    <form  action="adminLogin.php" method="post" >
 
         <div class="form-group">
-            <input type="text" class="form-control" id="inputAdmin" placeholder="Admin Username" required>
+            <input type="text" class="form-control" name="inputAdmin" placeholder="Admin Username" required>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Admin Password" required>
+            <input type="password" class="form-control" name="inputPassword" placeholder="Admin Password" required>
         </div>
 		
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" name="adminLogin"class="btn btn-primary">Login</button>
 
     </form>
     </div>
 </div></div></div>
+<?php
+    if(isset($_POST['adminLogin'])){
+        $inputAdmin = $_POST['inputAdmin'];
+        $inputPassword = $_POST['inputPassword'];
+        echo $inputAdmin;
+        $query = "select password from customer where username = '$inputAdmin' and role='admin'";
+        $query_run = mysqli_query($db_connection,$query);
+        $num_rows = mysqli_num_rows($query_run);
+        if($num_rows>0){
+            $data = mysqli_fetch_assoc($query_run);
+            if($inputPassword==$data['password']){
+                session_start();
+                $_SESSION['inputAdmin'] = $inputAdmin;
+                header("location:adminHome.php");
+            }else{
+                echo 'wrong password';              
+            }
 
+        }else{
+            echo 'user not exist';
+        }
+    }
+
+    ?>
 
 </body>
 </html>
