@@ -47,30 +47,80 @@
 		<div class="landing-text ml-5 mt-3">
             <h1>Verify Reservation</h1>
             <br>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search by date/name/phonenum/field/status" id="keyword">
-						
-						<span class="input-group-btn">
-							<button class="btn btn-primary" style="margin-left:5px" type="button" id="btn-search">SEARCH</button>
-							<a href="" class="btn btn-warning">RESET</a>
-						</span>
-					</div>
-				</div>
-			</div>
-			<br>
-            <div class="site-content" id="view"><?php include "verifView.php"; ?></div>
+			
+            
 		</div>
-        
-		
-		<script src="js/jquery.min.js"></script>
-	
-		<script src="js/bootstrap.min.js"></script>
-		
-		<script src="js/ajax.js"></script>
-        
+		<div class="container">
+		<input type='hidden' id='sort' value='asc'>
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped" id='empTable' >
+					<thead><tr>
+						<th><span onclick='sortTable("username");'>Username</span></th>
+						<th ><span onclick='sortTable("phonenum");'>Phone Number</span></th>
+						<th><span onclick='sortTable("tgl");'>Date</span></th>
+						<th><span onclick='sortTable("start");'>Start</span></th>
+						<th><span onclick='sortTable("end");'>End</span></th>
+						<th><span onclick='sortTable("duration");'>Duration</span></th>
+						<th><span onclick='sortTable("tipe");'>Field</span></th>
+						<th>Action</th>
+					</tr></thead>
+					<?php
+					include "dbConnect.php";
+					
+
+					
+					$sql = mysqli_query($db_connection, "SELECT * FROM verifikasi order by tgl desc");
+						
+					$sql2 = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlah FROM verifikasi");
+					$get_jumlah = mysqli_fetch_array($sql2);
+			
+
+					while($data = mysqli_fetch_array($sql)){ 
+						?>
+							<tbody><tr>
+								<td class="align-middle"><?php echo $data['username']; ?></td>
+								<td class="align-middle"><?php echo $data['phonenum']; ?></td>
+								<td class="align-middle"><?php echo $data['tgl']; ?></td>
+								<td class="align-middle"><?php echo $data['start']; ?>.00</td>
+								<td class="align-middle"><?php echo $data['end']; ?>.00</td>
+								<td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
+								<td class="align-middle"><?php echo $data['tipe']; ?></td>
+								<td><a href="responseAccept.php?transnum=<?php echo $data['transnum']; ?>" class="btn btn-success">Accept</a>
+								<a href="responseReject.php?transnum=<?php echo $data['transnum']; ?>" class="btn btn-danger">Reject</a></td>
+							</tr></tbody>
+						<?php
+						}
+						?>
+					</table>
+			</div>
+		</div>
 	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>	
+	<script src="js/ajax.js"></script>
+	<script>
+        function sortTable(columnName){
+            
+            var sort = $("#sort").val();
+            $.ajax({
+                url:'verif_fetch_details.php',
+                type:'post',
+                data:{columnName:columnName,sort:sort},
+                success: function(response){
+            
+                    $("#empTable tr:not(:first)").remove();
+                    
+                    $("#empTable").append(response);
+                    if(sort == "asc"){
+                        $("#sort").val("desc");
+                    }else{
+                        $("#sort").val("asc");
+                    }
+                                
+                }
+            });
+        }
+</script>
 	</body>
 </html>
 

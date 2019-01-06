@@ -9,7 +9,7 @@ $select_query = "select * from verifikasi order by ".$columnName." ".$sort." ";
 
 $result = mysqli_query($db_connection,$select_query);
 
-$html = '';
+$htmls = '';
 while($data = mysqli_fetch_array($result)){ 
     ?>
         <tbody><tr>
@@ -20,8 +20,8 @@ while($data = mysqli_fetch_array($result)){
             <td class="align-middle"><?php echo $data['end']; ?>.00</td>
             <td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
             <td class="align-middle"><?php echo $data['tipe']; ?></td>
-            <td class="align-middle"><a href="responseAccept.php?transnum=<?php echo $data['transnum']; ?>">Accept</a>
-            <a href="responseReject.php?transnum=<?php echo $data['transnum']; ?>">Reject</a></td>
+            <td class="align-middle"><a href="responseAccept.php?transnum=<?php echo $data['transnum']; ?>" class="btn btn-success">Accept</a>
+            <a href="responseReject.php?transnum=<?php echo $data['transnum']; ?>" class="btn btn-danger">Reject</a></td>
         </tr></tbody>
     <?php
     }
