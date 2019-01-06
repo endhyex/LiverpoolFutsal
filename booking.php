@@ -13,6 +13,21 @@ if(empty($_SESSION['username'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login - Liverpool Futsal Depok</title>
+    <style>
+.parallax {
+  /* The image used */
+  background-image: url("res/img/bekgronbooking.jpg");
+
+  /* Set a specific height */
+  min-height: 200px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -53,7 +68,7 @@ if(empty($_SESSION['username'])){
             </ul>
         </nav>
     </header>
-
+    <div class="parallax"></div>
     <div class="mt-3 ml-4 mb-1" style="max-width: 60%">
         <h1>Ongoing Bookings</h1>
     </div>

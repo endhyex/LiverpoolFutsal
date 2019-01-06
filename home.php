@@ -14,7 +14,7 @@ if(empty($_SESSION['username'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login - Liverpool Futsal Depok</title>
-    <style>
+    <style class="img-fluid">
     body { 
         background: url("res/img/bekgronhome1.jpg") no-repeat fixed center;
         background-size: 100%;
