@@ -63,6 +63,14 @@ insert into booking (id, tgl, start, end, duration, field) values
 (2, '2019-01-06',11, 13, 2, 3),
 (3, '2019-01-06',11, 13, 2, 1);
 
+create view transaksi as select transnum, tgl, username, phonenum, start, end, duration, tipe, status
+from booking inner join customer on booking.id = customer.id inner join field on booking.field=field.fieldnum
+where status != 'Waiting for Confirmation'; 
+
+create view verifikasi as select transnum, username, phonenum, tgl, start, end, duration, tipe, status
+from booking inner join customer on booking.id = customer.id inner join field on booking.field=field.fieldnum
+where status = 'Waiting for Confirmation'; 
+
 
 ----------------------------------------------------------------------------
 coba coba
