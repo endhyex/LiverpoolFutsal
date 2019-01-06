@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if(empty($_SESSION['inputAdmin'])){
+	header("location: adminLogin.php");
+}
+?>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -38,7 +44,7 @@
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="margin-right:40px">Logout</a>
+					<a href = "adminLogout.php" class="nav-link" href="#" style="margin-right:40px">Logout</a>
                     </li>           
                 </ul>
             </nav>
