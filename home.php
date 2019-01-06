@@ -29,10 +29,10 @@ if(empty($_SESSION['username'])){
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-Left:20px">My Booking</a>
+                    <a class="nav-link" href="booking.php" style="margin-Left:20px">My Booking</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-Left:40px">History</a>
+                    <a class="nav-link" href="history.php" style="margin-Left:40px">History</a>
                 </li>  
             </ul> 
 
