@@ -19,6 +19,7 @@ while($data = mysqli_fetch_array($result)){
             <td class="align-middle"><?php echo $data['start']; ?>.00</td>
             <td class="align-middle"><?php echo $data['end']; ?>.00</td>
             <td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
+            <td class="align-middle"><?php echo $data['fieldnum']; ?></td>
             <td class="align-middle"><?php echo $data['tipe']; ?></td>
             <td class="align-middle"><?php echo $data['price']; ?></td>
             <td class="align-middle"><?php echo $data['status']; ?></td>
