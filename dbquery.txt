@@ -37,7 +37,8 @@ end int not null,
 duration int not null,
 field int not null references field(fieldnum),
 price int not null,
-status varchar(30) not null default 'Waiting for Confirmation'
+status varchar(30) not null default 'Waiting for Confirmation',
+datecreated datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 insert into booking (username, tgl, start, end, duration, field, price)
