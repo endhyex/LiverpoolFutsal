@@ -12,6 +12,7 @@
 				<th><span onclick='sortTable("duration");'>Duration</span></th>
 				<th><span onclick='sortTable("tipe");'>Field</span></th>
 				<th><span onclick='sortTable("price");'>Income</span></th>
+				<th><span onclick='sortTable("price");'>Status</span></th>
 				<th>Action</th>
 			</tr></thead>
 			<?php
@@ -43,6 +44,7 @@
 						<td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
 						<td class="align-middle"><?php echo $data['tipe']; ?></td>
 						<td class="align-middle"><?php echo $data['price']; ?></td>
+						<td class="align-middle"><?php echo $data['status']; ?></td>
 						<td><a href="delete.php?transnum=<?php echo $data['transnum']; ?>" class="btn btn-danger">Delete</a></td>
 					</tr></tbody>
 				<?php
