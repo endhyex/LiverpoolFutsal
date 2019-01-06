@@ -3,7 +3,7 @@ $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
 session_start();
 if(empty($_SESSION['username'])){
 	header("location: login.php");
-}elseif(empty($_SESSION['date'])||empty($_SESSION['field'])||empty($_SESSION['duration'])||empty($_SESSION['price'])||empty($_SESSION['start_time'])||empty($_SESSION['duration'])){
+}elseif(empty($_SESSION['date'])||empty($_SESSION['field'])||empty($_SESSION['duration'])||empty($_SESSION['price'])||empty($_SESSION['start_time'])){
     header("location: home.php");
 }
 
@@ -13,7 +13,6 @@ $field=$_SESSION['field'];
 $duration = $_SESSION["duration"];
 $price = $_SESSION["price"];
 $start_time = $_SESSION["start_time"];
-$duration = $_SESSION["duration"];
 $end_time = $start_time+$duration;
 
 echo $price;
@@ -27,7 +26,6 @@ if($query_run){
     unset($_SESSION["duration"]);
     unset($_SESSION["price"]);
     unset($_SESSION["start_time"]);
-    unset($_SESSION["duration"]);
     
     header("location: booking.php");
 }else{
@@ -36,7 +34,6 @@ if($query_run){
     unset($_SESSION["duration"]);
     unset($_SESSION["price"]);
     unset($_SESSION["start_time"]);
-    unset($_SESSION["duration"]);
 
     echo 'Booking failed please try again!';
 }

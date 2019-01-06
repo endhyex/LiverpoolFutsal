@@ -34,10 +34,10 @@ if(empty($_SESSION['username'])){
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-Left:20px">My Booking</a>
+                    <a class="nav-link" href="booking.php" style="margin-Left:20px">My Booking</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-Left:40px">History</a>
+                    <a class="nav-link" href="history.php" style="margin-Left:40px">History</a>
                 </li>  
             </ul> 
 
@@ -276,6 +276,7 @@ if(empty($_SESSION['username'])){
                             $_SESSION['field'] = $field;
                             $_SESSION["duration"] = $duration ;
                             $_SESSION["price"] = $price;
+                            $_SESSION["start_time"] = $start_time;
                             ?>
                             <a href=book.php><button type="button" class="btn btn-primary mb-2" name="confirm">Confirm!</button></a>           
                         </div>  

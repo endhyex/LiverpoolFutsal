@@ -23,6 +23,7 @@ if(empty($_SESSION['username'])){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
 <body>
+
     <header>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top">
             <a href="index.php" class="nav-brand ml-3 mr-3">
@@ -30,7 +31,7 @@ if(empty($_SESSION['username'])){
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href = "booking.php"  style="margin-Left:20px">My Booking</a>
+                    <a class="nav-link" href = "booking.php"  style="margin-Left:20px">My Booking</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="history.php" style="margin-Left:40px">History</a>
@@ -55,78 +56,143 @@ if(empty($_SESSION['username'])){
     </header>
 
     <div class="mt-3 ml-4 mb-1" style="max-width: 60%">
-        <h1>Ongoing Bookings</h1>
+        <h1>Booking Detail</h1>
     </div>
+    <?php
+    $username = $_SESSION['username'];
+    $query = "select name from customer where username = '$username'";
+    $query_run = mysqli_query($db_connection,$query);
+    $row = mysqli_fetch_assoc($query_run);
+    $name = $row['name'];
 
-    <div class="mb-5">
+    $transnum = $_GET['transnum']; 
+    $query = "select * from booking where transnum = $transnum";
+    $query_run = mysqli_query($db_connection,$query);
+    $row = mysqli_fetch_assoc($query_run);
+    $tgl = $row['tgl'];
+    $start_time = $row['start'];
+    $duration = $row['duration'];
+    $end_time = $start_time+$duration;
+    $field = $row['field'];
+    $price = $row['price'];
+    $status = $row['status'];
+    $datecreated = $row['datecreated'];
+
+    $created = strtotime($datecreated); 
+    $createdformat = date('d M, h.i a',$created);
+
+    $date = strtotime($tgl);
+    $now = date('Y-m-d');
+    $newformat = date('l\, F jS Y',$date);
+
+    ?>
+    
+    <!-- <p class = "mt-3 ml-4 mb-1">OrderID:</p>
+    <p class = "mt-3 ml-4">Booking for:</p>
+    <h3 class = "mt-3 ml-4 mb-1">day, MM DD YYYY</h2> -->
+
+    <div class="card shadow-sm mt-3 ml-4  mr-4" style="width:900px; max-width: 90%">
+        <div class="card-body">
+            <div class=border-bottom>
+                <div class="row">
+                    <div class="col ">
+                        <img src="res/img/liverpool-logo.png" width="100" height="57" alt="Flowers in Chania">
+                    </div>
+                    <div class="col  card-title">
+                        <p class = "text-right"><?php echo $createdformat;?></p>                    
+                        <p class = "text-right">OrderID: <?php echo $transnum?></p>  
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-bottom mt-3 mb-3">
+                <div class="mb-3">
+                    <p class="text-muted">Order By</p>
+                    <h4><?php echo $name; ?></h4>
+                    <?php echo $username;?>
+                </div>
+            </div>
+
+            <div class="border-bottom mt-3 mb-1">
+                <div class="mb-4">
+                    <p class="text-muted">Order Details:</p>
+                    <p class="card-title">Booking Date:</p>
+                    <h4 class="mb-3"><?php echo $newformat;?></h4>
+                    <p class="card-title">Booking Time:</p>
+                    <h6 class="mb-3"><?php echo $start_time;?>.00 - <?php echo $end_time;?>.00</h6>
+                    <p class="card-title">Booking Duration:</p>
+                    
+                    <h6 class="mb-3"><?php echo $duration?> hour(s)</h6>
+                    <p class="card-title">Field Number:</p>
+                    
+                    <h6 class="mb-3"><?php echo $field?></h6>
+                    <p class="card-title">Status:</p>
+                    
+                    <h6 class="mb-3"><?php echo $status?></h6>
+                </div>
+            </div>
+
+            <div class="mt-3 mb-1">
+                <div class="mb-4">
+                    <p class="text-muted">Total Price:</p>
+                    <h4>Rp. <?php echo money_format($price);?></h4>                    
+                </div>
+            </div>
+        </div>       
+    </div>
+    <!-- modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cancelling Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure?<br>
+                You cannot undo this action!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>    
+                <a href="cancelbooking.php?transnum=<?php echo $transnum?>"><button type="button" class="btn btn-primary">Yes</button></a>
+            </div>
+            </div>
+        </div>
+    </div>
 
     <?php
-    $username = $_SESSION["username"];
-    $now = date('Y-m-d');
-    $query = "select * from booking where username = '$username' order by datecreated desc";
-    $query_run = mysqli_query($db_connection,$query);
-    while($row = mysqli_fetch_assoc($query_run)){
-        $transnum = $row['transnum'];
-        $tgl = $row['tgl'];
-        $price = $row['price'];
-        $status = $row['status'];
-        $start_time = $row['start'];
-        $duration = $row['duration'];
-        $end_time = $start_time+$duration;
-        $datecreated = $row['datecreated'];
-
-        $created = strtotime($datecreated); 
-        $createdformat = date('d M, h.i a',$created);
-
-        $date = strtotime($tgl);
-        $now = date('Y-m-d');
-        $newformat = date('l\, F jS Y',$date);
-
-        ?> 
-        <!-- modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cancelling Order</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure?<br>
-                    You cannot undo this action!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>    
-                    <a href="cancelbooking.php?transnum=<?php echo $transnum?>"><button type="button" class="btn btn-primary">Yes</button></a>
-                </div>
-                </div>
+    if($status == "Waiting for Confirmation" && $tgl>=$now){
+        ?>
+        <div class="mt-3 ml-4 mr-4 mb-5 ">
+            <div class="mb-4">
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                Cancel Booking
+                </button>                   
             </div>
         </div>
-
-        <div class="card shadow-sm mt-3 ml-4 mb-1" style="width: 900px; max-width: 90%">
-            <div class="card-body">
-                <h6 class="card-title">OrderID: <?php echo $transnum?></h6>
-                <h4> <?php echo $newformat?> </h4>
-                <p class = "text-muted"><?php echo $status?></p> 
-                <p>Rp. <?php echo money_format($price)?>  </p>        
-                <a href="bookingdetail.php?transnum=<?php echo $transnum;?>"class="card-link"><i class="material-icons">more_horiz</i> Detail</a> 
-                <a href="" class="card-link text-danger" data-toggle="modal" data-target="#exampleModal"> Cancel Order</a>    
-            </div>
-            <div class="card-footer text-right">
-                    <small class="text-muted"><?php echo $createdformat?></small>
-            </div>
-        </div>
+        
         <?php
+
     }
     ?>
-    </div>
+
+    <?Php //echo(time_elapsed_string($datecreated));
+
     
+
+
+    ?>
+
+    
+
 </body>
 </html>
 
 <?php
+
+
 function money_format($floatcurr, $curr = 'EUR'){
     $currencies['ARS'] = array(2, ',', '.');          //  Argentine Peso
     $currencies['AMD'] = array(2, '.', ',');          //  Armenian Dram
@@ -240,4 +306,30 @@ function money_format($floatcurr, $curr = 'EUR'){
         return number_format($floatcurr, $currencies[$curr][0], $currencies[$curr][1], $currencies[$curr][2]);
     }
 }
+
+function formatinr($input){
+    $dec = "";
+    $pos = strpos($input, ".");
+    if ($pos === FALSE)
+    {
+        //no decimals
+    }
+    else
+    {
+        //decimals
+        $dec   = substr(round(substr($input, $pos), 2), 1);
+        $input = substr($input, 0, $pos);
+    }
+    $num   = substr($input, -3);    // get the last 3 digits
+    $input = substr($input, 0, -3); // omit the last 3 digits already stored in $num
+    // loop the process - further get digits 2 by 2
+    while (strlen($input) > 0)
+    {
+        $num   = substr($input, -2).",".$num;
+        $input = substr($input, 0, -2);
+    }
+    return $num.$dec;
+}
+
 ?>
+
