@@ -1,6 +1,5 @@
 <?php
-$keyword = $_POST['keyword']; 
-
+$keyword = $_POST['keyword'];
 ob_start();
 include "view.php";
 $html = ob_get_contents(); 

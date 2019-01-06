@@ -20,7 +20,8 @@ while($data = mysqli_fetch_array($result)){
             <td class="align-middle"><?php echo $data['end']; ?>.00</td>
             <td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
             <td class="align-middle"><?php echo $data['tipe']; ?></td>
-            <td class="align-middle"><a href="delete.php?transnum=<?php echo $data['transnum']; ?>">Delete</a></td>
+            <td class="align-middle"><a href="responseAccept.php?transnum=<?php echo $data['transnum']; ?>">Accept</a>
+            <a href="responseReject.php?transnum=<?php echo $data['transnum']; ?>">Reject</a></td>
         </tr></tbody>
     <?php
     }

@@ -3,16 +3,19 @@ Database & user: u469595974_sbd
 password: sbdkelas1234
 
 create table customer (
-id serial  not null primary key,
 name text not null, 
 phonenum text  not null,
-username text  not null,
+username text  primary key,
 password text not null,
 role varchar(30) not null default 'user'
 );
 
 insert into customer (name,phonenum,username,password) values
-('Frenzel Timothy', '081310695040', 'frenzelts', 'password'); 
+('Frenzel Timothy', '081310695040', 'frenzelts', 'password'),
+('DP Nala', '08111111', 'dpnala', 'password'),
+('Hapisz', '08122111', 'hafidz', 'password'),
+('Zidan', '08113311', 'zidan', 'password'),
+('Endi', '08144411', 'ndidi', 'password');
 
 create table field(
 fieldnum int primary key,
@@ -37,8 +40,16 @@ price int not null,
 status varchar(30) not null default 'Waiting for Confirmation'
 );
 
-insert into booking (id, tgl, start, end, duration, field)
-values (1, '2019-01-02',10, 12, 2, 1);
+insert into booking (username, tgl, start, end, duration, field, price)
+values (1, '2019-01-02',10, 12, 2, 1, 0),
+('frenzelts', '2019-01-02',10, 12, 2, 1,0),
+('dpnala', '2019-01-02',12, 14, 2, 2,0),
+('hafidz', '2019-01-02',18, 21, 3, 1,0),
+('zidan', '2019-01-03',11, 12, 1, 3,0),
+('ndidi', '2019-01-03',10, 13, 3, 4,0),
+('frenzelts', '2019-01-04',11, 12, 1, 2,0),
+('dpnala', '2019-01-06',11, 13, 2, 3,0),
+('hafidz', '2019-01-06',11, 13, 2, 1,0);
 
 create table price(
 priceid int not null,
@@ -47,28 +58,13 @@ start int not null,
 end int not null,
 price int not null);
 
-insert into customer (name,phonenum,username,password) values
-('DP Nala', '08111111', 'dpnala', 'password'),
-('Hapisz', '08122111', 'hafidz', 'password'),
-('Zidan', '08113311', 'zidan', 'password'),
-('Endi', '08144411', 'ndidi', 'password');
 
-insert into booking (id, tgl, start, end, duration, field) values 
-(1, '2019-01-02',10, 12, 2, 1),
-(2, '2019-01-02',12, 14, 2, 2),
-(3, '2019-01-02',18, 21, 3, 1),
-(4, '2019-01-03',11, 12, 1, 3),
-(5, '2019-01-03',10, 13, 3, 4),
-(1, '2019-01-04',11, 12, 1, 2),
-(2, '2019-01-06',11, 13, 2, 3),
-(3, '2019-01-06',11, 13, 2, 1);
-
-create view transaksi as select transnum, tgl, username, phonenum, start, end, duration, tipe, status
-from booking inner join customer on booking.id = customer.id inner join field on booking.field=field.fieldnum
+create view transaksi as select transnum, tgl, customer.username, phonenum, start, end, duration, tipe, status
+from booking inner join customer on booking.username = customer.username inner join field on booking.field=field.fieldnum
 where status != 'Waiting for Confirmation'; 
 
-create view verifikasi as select transnum, username, phonenum, tgl, start, end, duration, tipe, status
-from booking inner join customer on booking.id = customer.id inner join field on booking.field=field.fieldnum
+create view verifikasi as select transnum, customer.username, phonenum, tgl, start, end, duration, tipe, status
+from booking inner join customer on booking.username = customer.username inner join field on booking.field=field.fieldnum
 where status = 'Waiting for Confirmation'; 
 
 
