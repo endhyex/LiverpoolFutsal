@@ -59,7 +59,7 @@ end int not null,
 price int not null);
 
 
-create view transaksi as select transnum, tgl, customer.username, phonenum, start, end, duration, tipe, status
+create view transaksi as select transnum, tgl, customer.username, phonenum, start, end, duration, tipe, price, status
 from booking inner join customer on booking.username = customer.username inner join field on booking.field=field.fieldnum
 where status != 'Waiting for Confirmation'; 
 

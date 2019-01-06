@@ -47,8 +47,17 @@
 		<div class="landing-text ml-5 mt-3">
             <h1>Verify Reservation</h1>
             <br>
-			
-            
+			<?php
+					include "dbConnect.php";
+					
+
+					
+					$sql = mysqli_query($db_connection, "SELECT * FROM verifikasi order by tgl desc");
+						
+					$sql2 = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlah FROM verifikasi");
+					$get_jumlah = mysqli_fetch_array($sql2);
+			?>
+			<?php echo $get_jumlah['jumlah']; ?> data(s) waiting for confirmation.<br><br>
 		</div>
 		<div class="container">
 		<input type='hidden' id='sort' value='asc'>
@@ -65,16 +74,6 @@
 						<th>Action</th>
 					</tr></thead>
 					<?php
-					include "dbConnect.php";
-					
-
-					
-					$sql = mysqli_query($db_connection, "SELECT * FROM verifikasi order by tgl desc");
-						
-					$sql2 = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlah FROM verifikasi");
-					$get_jumlah = mysqli_fetch_array($sql2);
-			
-
 					while($data = mysqli_fetch_array($sql)){ 
 						?>
 							<tbody><tr>
