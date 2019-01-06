@@ -11,7 +11,7 @@
 				<th><span onclick='sortTable("end");'>End</span></th>
 				<th><span onclick='sortTable("duration");'>Duration</span></th>
 				<th><span onclick='sortTable("tipe");'>Field</span></th>
-				<th><span onclick='sortTable("status");'>Status</span></th>
+				<th><span onclick='sortTable("price");'>Income</span></th>
 				<th>Action</th>
 			</tr></thead>
 			<?php
@@ -21,9 +21,9 @@
 			if(isset($_POST['search']) && $_POST['search'] == true){ 
 				$param = '%'.mysqli_real_escape_string($db_connection, $keyword).'%';
 				
-				$sql = mysqli_query($db_connection, "SELECT * FROM transaksi WHERE username LIKE '".$param."' OR tgl LIKE '".$param."' OR tipe LIKE '".$param."' OR phonenum like '".$param."' OR status LIKE '".$param."' order by tgl desc");
+				$sql = mysqli_query($db_connection, "SELECT * FROM transaksi WHERE username LIKE '".$param."' OR tgl LIKE '".$param."' OR tipe LIKE '".$param."' OR phonenum like '".$param."'");
 				
-				$sql2 = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlah FROM transaksi WHERE username LIKE '".$param."' OR tgl LIKE '".$param."' OR tipe LIKE '".$param."' OR phonenum like '".$param."' OR status LIKE '".$param."' order by tgl desc");
+				$sql2 = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlah FROM transaksi WHERE username LIKE '".$param."' OR tgl LIKE '".$param."' OR tipe LIKE '".$param."' OR phonenum like '".$param."'");
 				$get_jumlah = mysqli_fetch_array($sql2);
 			}else{ 
 				$sql = mysqli_query($db_connection, "select * from transaksi order by tgl desc");
@@ -42,7 +42,7 @@
 						<td class="align-middle"><?php echo $data['end']; ?>.00</td>
 						<td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
 						<td class="align-middle"><?php echo $data['tipe']; ?></td>
-						<td class="align-middle"><?php echo $data['status']; ?></td>
+						<td class="align-middle"><?php echo $data['price']; ?></td>
 						<td><a href="delete.php?transnum=<?php echo $data['transnum']; ?>" class="btn btn-danger">Delete</a></td>
 					</tr></tbody>
 				<?php

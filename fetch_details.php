@@ -20,7 +20,7 @@ while($data = mysqli_fetch_array($result)){
             <td class="align-middle"><?php echo $data['end']; ?>.00</td>
             <td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
             <td class="align-middle"><?php echo $data['tipe']; ?></td>
-            <td class="align-middle"><?php echo $data['status']; ?></td>
+            <td class="align-middle"><?php echo $data['price']; ?></td>
             <td><a href="delete.php?transnum=<?php echo $data['transnum']; ?>" class="btn btn-danger">Delete</a></td>
         </tr></tbody>
     <?php
