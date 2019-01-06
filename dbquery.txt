@@ -1,6 +1,6 @@
-Server: 127.0.0.1:3306
-Database & user: u469595974_sbd
-password: sbdkelas1234
+LOAD DATA INFILE 'F:/customer.csv' INTO TABLE customer
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
 
 create table customer (
 name text not null, 
@@ -60,11 +60,11 @@ end int not null,
 price int not null);
 
 
-create view transaksi as select transnum, tgl, customer.username, phonenum, start, end, duration, tipe, price, status
+create view transaksi as select transnum, tgl, customer.username, phonenum, start, end, duration, fieldnum, tipe, price, status
 from booking inner join customer on booking.username = customer.username inner join field on booking.field=field.fieldnum
 where status != 'Waiting for Confirmation'; 
 
-create view verifikasi as select transnum, customer.username, phonenum, tgl, start, end, duration, tipe, status
+create view verifikasi as select transnum, customer.username, phonenum, tgl, start, end, duration, fieldnum, tipe, status
 from booking inner join customer on booking.username = customer.username inner join field on booking.field=field.fieldnum
 where status = 'Waiting for Confirmation'; 
 

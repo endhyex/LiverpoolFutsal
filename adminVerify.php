@@ -49,9 +49,6 @@
             <br>
 			<?php
 					include "dbConnect.php";
-					
-
-					
 					$sql = mysqli_query($db_connection, "SELECT * FROM verifikasi order by tgl desc");
 						
 					$sql2 = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlah FROM verifikasi");
@@ -70,7 +67,8 @@
 						<th><span onclick='sortTable("start");'>Start</span></th>
 						<th><span onclick='sortTable("end");'>End</span></th>
 						<th><span onclick='sortTable("duration");'>Duration</span></th>
-						<th><span onclick='sortTable("tipe");'>Field</span></th>
+						<th><span onclick='sortTable("fieldnum");'>FieldNum</span></th>
+						<th><span onclick='sortTable("tipe");'>Type</span></th>
 						<th>Action</th>
 					</tr></thead>
 					<?php
@@ -83,6 +81,7 @@
 								<td class="align-middle"><?php echo $data['start']; ?>.00</td>
 								<td class="align-middle"><?php echo $data['end']; ?>.00</td>
 								<td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
+								<td class="align-middle"><?php echo $data['fieldnum']; ?></td>
 								<td class="align-middle"><?php echo $data['tipe']; ?></td>
 								<td><a href="responseAccept.php?transnum=<?php echo $data['transnum']; ?>" class="btn btn-success">Accept</a>
 								<a href="responseReject.php?transnum=<?php echo $data['transnum']; ?>" class="btn btn-danger">Reject</a></td>

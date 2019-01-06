@@ -10,7 +10,8 @@
 				<th><span onclick='sortTable("start");'>Start</span></th>
 				<th><span onclick='sortTable("end");'>End</span></th>
 				<th><span onclick='sortTable("duration");'>Duration</span></th>
-				<th><span onclick='sortTable("tipe");'>Field</span></th>
+				<th><span onclick='sortTable("fieldnum");'>FieldNum</span></th>
+				<th><span onclick='sortTable("tipe");'>Type</span></th>
 				<th><span onclick='sortTable("price");'>Income</span></th>
 				<th><span onclick='sortTable("price");'>Status</span></th>
 				<th>Action</th>
@@ -53,6 +54,7 @@
 						<td class="align-middle"><?php echo $data['start']; ?>.00</td>
 						<td class="align-middle"><?php echo $data['end']; ?>.00</td>
 						<td class="align-middle"><?php echo $data['duration']; ?> hour(s)</td>
+						<td class="align-middle"><?php echo $data['fieldnum']; ?></td>
 						<td class="align-middle"><?php echo $data['tipe']; ?></td>
 						<td class="align-middle"><?php echo $data['price']; ?></td>
 						<td class="align-middle"><?php echo $data['status']; ?></td>
