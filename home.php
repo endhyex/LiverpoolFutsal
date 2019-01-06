@@ -14,7 +14,12 @@ if(empty($_SESSION['username'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login - Liverpool Futsal Depok</title>
-
+    <style>
+    body { 
+        background: url("res/img/bekgronhome1.jpg") no-repeat fixed center;
+        background-size: 100%;
+    }   
+    </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="res/css/style.css">     
@@ -29,16 +34,16 @@ if(empty($_SESSION['username'])){
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-Left:20px">My Booking</a>
+                    <a class="nav-link" href="#" style="margin-Left:20px"><font color="ffffff">My Booking</font></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-Left:40px">History</a>
+                    <a class="nav-link" href="#" style="margin-Left:40px"><font color="ffffff">History</font></a>
                 </li>  
             </ul> 
 
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link" style="margin-Right:50px" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons" style="font-size:30px">account_circle</i> Full Name</a>
+                    <a class="nav-link" style="margin-Right:50px" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons" style="font-size:30px">account_circle</i> <font color="ffffff">Full Name</font></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
@@ -55,8 +60,8 @@ if(empty($_SESSION['username'])){
 
 
     <div class="mt-3 ml-4 mb-1" style="max-width: 60%">
-        <h1>Reservation</h1>
-        <p>Search for available field</p>
+        <h1><font color="f29200">Reservation</font></h1>
+        <p><font color="f29200">Search for available field</font></p>
 
 
         <form action="home.php" method="POST" class="form-inline">
@@ -75,7 +80,7 @@ if(empty($_SESSION['username'])){
                         </select>   
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary mb-2" name="date_search">Search!</button>
+            <button type="submit" class="btn btn-warning mb-2" name="date_search"><font color="043752">Search!</font></button>
         </form>
     </div>
 

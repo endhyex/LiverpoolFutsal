@@ -5,7 +5,7 @@ password: sbdkelas1234
 create table customer (
 name text not null, 
 phonenum text  not null,
-username text  primary key,
+username varchar  primary key,
 password text not null,
 role varchar(30) not null default 'user'
 );

@@ -9,7 +9,12 @@ $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up - Liverpool Futsal Depok</title>
-
+<style>
+    body { 
+        background: url("res/img/bekgronsignup.jpg") no-repeat ;
+        background-size: 100%;
+    }   
+    </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="res/css/style.css">    
 
@@ -18,7 +23,7 @@ $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-            <a href="index.php" class="nav-brand ml-3 mr-3">
+            <a href="index.php" class="nav-brand ml-auto mr-auto">
             <img src="res/img/liverpool-logo.png" width="100" height="57" class="d-inline-block align-top" alt=""> </a>
 
             <ul class="navbar-nav ml-auto">
@@ -32,7 +37,7 @@ $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
         </nav>
     </header>
 
-    <div class="container ml-3 mr-8 mt-3">
+    <div class="container ml-6 mr-0 mt-3">
         <h1 class="form-heading">Sign Up</h1>
         <form action="signup.php" method="POST">
             <div class="form-group">
@@ -55,10 +60,10 @@ $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
                  <input type="password" class="form-control" name="repeatpass"  placeholder="Repeat Password" required>
              </div>
 
-              <p>Already has account? <a href = "login.php">Login</a></p>
+              <p><font color="043752">Already has account? </font><a href = "login.php"><font color="f29200">Login</font></a></p>
                     
 
-              <button type="Sign Up" name="signup" class="btn btn-primary">Sign Up</button>
+              <button type="Sign Up" name="signup" class="btn btn-warning"><font color="043752">Sign Up</font></button>
           </form>                    
     <div>
 

@@ -1,11 +1,5 @@
 <?php
 $db_connection = mysqli_connect("127.0.0.1", "root","", "liverpool");
-
-session_start();
-if(!empty($_SESSION['username'])){
-	header("location: home.php");
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -15,16 +9,20 @@ if(!empty($_SESSION['username'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login - Liverpool Futsal Depok</title>
-
+    <style>
+    body { 
+        background: url("res/img/bekgronlogin.jpg") no-repeat ;
+        background-size: 100%;
+    }   
+    </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="res/css/style.css">     
 
 </head>
 <body>
-
     <header>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-            <a href="index.php" class="nav-brand ml-3 mr-3">
+            <a href="index.php" class="nav-brand ml-auto mr-auto">
             <img src="res/img/liverpool-logo.png" width="100" height="57" class="d-inline-block align-top" alt=""> </a>
 
             <ul class="navbar-nav ml-auto">
@@ -37,8 +35,7 @@ if(!empty($_SESSION['username'])){
             </ul>
         </nav>
     </header>
-
-    <div class="container ml-6 mr-8 mt-3">
+    <div class="container ml-6 mr-0 mt-3">
         <h1 class="form-heading">Login</h1>
             <form action="login.php" method="POST">
                 <div class="form-group">
@@ -49,11 +46,11 @@ if(!empty($_SESSION['username'])){
                      <input type="password" class="form-control" placeholder="Password" name="password" required>
                 </div>
 
-                <p>Doesn't have account? <a href = "signup.php">Sign Up</a></p>
+                <p><font color="043752">Doesn't have account? </font><a href = "signup.php"><font color="f29200">Sign Up</font></a></p>
 
-                <button type="submit" name = "login" class="btn btn-primary">Login</button>
+                <button type="submit" name = "login" class="btn btn-secondary"><font color="f29200">Login</font></button>
             </form>
-    <div>   
+    </div> 
 
     <?php
     if(isset($_POST['login'])){

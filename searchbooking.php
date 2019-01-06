@@ -14,7 +14,12 @@ if(empty($_SESSION['username'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login - Liverpool Futsal Depok</title>
-
+    <style>
+    body { 
+        background: url("res/img/bekgronsearchbooking.jpg") no-repeat fixed center;
+        background-size: 100%;
+    }   
+    </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="res/css/style.css">
@@ -34,16 +39,16 @@ if(empty($_SESSION['username'])){
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-Left:20px">My Booking</a>
+                    <a class="nav-link" href="#" style="margin-Left:20px"><font color="ffffff">My Booking</font></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-Left:40px">History</a>
+                    <a class="nav-link" href="#" style="margin-Left:40px"><font color="ffffff">History</font></a>
                 </li>  
             </ul> 
 
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link" style="margin-Right:50px" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons" style="font-size:30px">account_circle</i> Full Name</a>
+                    <a class="nav-link" style="margin-Right:50px" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons" style="font-size:30px">account_circle</i> <font color="ffffff">Full Name</font></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
@@ -70,20 +75,20 @@ if(empty($_SESSION['username'])){
         header("location:home.php");
     }else{
         echo'<div class="mt-3 ml-4 mb-1" style="max-width: 60%">';
-        echo'<h1>Search Result</h1>';
+        echo'<h1><font color="f29200">Search Result</font></h1>';
 
         echo '
         <div class = row style="max-width:55%">
             <div class="col-md-6 border-right">
-            <p  style="display:inline;">'.$newformat.'</p>
+            <p  style="display:inline;"><font color="f29200">'.$newformat.'</font></p>
             </div>
             <div class="col-md-6">
-            <p class = "ml-2 mt-2" style="display:inline;">Field '.$field.'</p>
+            <p class = "ml-2 mt-2" style="display:inline;"><font color="f29200">Field '.$field.'</font></p>
             </div>
         </div>
         </div>';
         
-        echo '<h4 class = "ml-4 mt-4 mb-3">Time Available</h4>';
+        echo '<h4 class = "ml-4 mt-4 mb-3"><font color="f29200">Time Available</font></h4>';
         echo '<div class="row ml-4 mt-1" style="max-width:90%;">';
         //echo $date;
         for($x=7; $x<=23; $x++){
@@ -114,24 +119,22 @@ if(empty($_SESSION['username'])){
             }
             ?>
             </div>      
-            <h4 class = "ml-4 mt-3">Choose your time</h4>
+            <h4 class = "ml-4 mt-3"><font color="f29200">Choose your time</font></h4>
             <div class="mt-3 ml-4 mb-1" style="max-width: 60%">
                 <form method="post">
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Start Time</label>
                         <div class="col-sm-10">
                             <input type="number" min=7 max=23  name="start_time" class="form-control"  placeholder="Start Time" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label  class="col-sm-2 col-form-label">Duration</label>
                         <div class="col-sm-10">
                             <input type="number" min=1 max=5 name = "duration" class="form-control"  placeholder="Duration" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary mb-2" name="book">Book Now!</button>           
+                            <button type="submit" class="btn btn-warning mb-2" name="book"><font color="043752">Book Now!</font></button>           
                         </div>  
                     </div>
                 </form>

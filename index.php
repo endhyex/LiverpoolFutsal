@@ -14,9 +14,14 @@ if(!empty($_SESSION['username'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Liverpool Futsal Depok</title>
-
+    <style class="bg">
+    body { 
+        background: url("res/img/bekgron.jpg") no-repeat fixed center;
+        position: relative;
+        -webkit-animation:20s linear 0s alternate animate infinite ;
+    }   
+    </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
     <link rel="stylesheet" href="res/css/style.css">
 </head>
 <body>
@@ -25,14 +30,14 @@ if(!empty($_SESSION['username'])){
         <header>
             <nav class="navbar navbar-expand-lg navbar-light sticky-top">
                 <a href="index.php" class="nav-brand ml-3 mr-3">
-                <img src="res/img/liverpool-logo.png" width="100" height="57" class="d-inline-block align-top" alt=""> </a>
+                <img src="res/img/liverpool-logo.png" width="150" height="85,5" class="d-inline-block align-top" alt=""> </a>
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php" style="margin-right:20px">Login</a>
+                        <a class="nav-link" href="login.php" style="margin-right:20px"><font color="f29200">Login</font></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="signup.php" style="margin-right:40px">Sign Up</a>
+                        <a class="nav-link" href="signup.php" style="margin-right:40px"><font color="f29200">Sign Up</font></a>
                     </li>           
                 </ul>
             </nav>
@@ -40,8 +45,8 @@ if(!empty($_SESSION['username'])){
 
     
         <div class="landing-text ml-5">
-            <h1 >We're now available for</h1> 
-            <h1 >online booking!</h1>
+            <h1 style="margin-top: 15%"><font color="043752">We're now available for</font></h1> 
+            <h1 ><font color="043752">online booking!</font></h1>
         </div>
 
     </div>
