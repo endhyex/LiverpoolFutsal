@@ -34,10 +34,10 @@ if(empty($_SESSION['username'])){
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-Left:20px"><font color="ffffff">My Booking</font></a>
+                    <a class="nav-link" href="booking.php" style="margin-Left:20px"><font color="ffffff">My Booking</font></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-Left:40px"><font color="ffffff">History</font></a>
+                    <a class="nav-link" href="history.php" style="margin-Left:40px"><font color="ffffff">History</font></a>
                 </li>  
             </ul> 
 

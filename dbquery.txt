@@ -37,7 +37,8 @@ end int not null,
 duration int not null,
 field int not null references field(fieldnum),
 price int not null,
-status varchar(30) not null default 'Waiting for Confirmation'
+status varchar(30) not null default 'Waiting for Confirmation',
+datecreated datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 insert into booking (username, tgl, start, end, duration, field, price)
@@ -59,7 +60,7 @@ end int not null,
 price int not null);
 
 
-create view transaksi as select transnum, tgl, customer.username, phonenum, start, end, duration, tipe, status
+create view transaksi as select transnum, tgl, customer.username, phonenum, start, end, duration, tipe, price, status
 from booking inner join customer on booking.username = customer.username inner join field on booking.field=field.fieldnum
 where status != 'Waiting for Confirmation'; 
 

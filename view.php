@@ -26,13 +26,24 @@
 				
 				$sql2 = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlah FROM transaksi WHERE username LIKE '".$param."' OR tgl LIKE '".$param."' OR tipe LIKE '".$param."' OR phonenum like '".$param."'");
 				$get_jumlah = mysqli_fetch_array($sql2);
+				$sql3 = mysqli_query($db_connection, "SELECT sum(price) as total from transaksi WHERE username LIKE '".$param."' OR tgl LIKE '".$param."' OR tipe LIKE '".$param."' OR phonenum like '".$param."'");
+				$data2 = mysqli_fetch_array($sql3);
+
+				$sqlacc = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlahaccept FROM transaksi where status ='Accepted' AND username LIKE '".$param."' OR tgl LIKE '".$param."' OR tipe LIKE '".$param."' OR phonenum like '".$param."'");
+				$get_sqlacc = mysqli_fetch_array($sqlacc);
 			}else{ 
 				$sql = mysqli_query($db_connection, "select * from transaksi order by tgl desc");
 				
 				$sql2 = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlah FROM transaksi");
 				$get_jumlah = mysqli_fetch_array($sql2);
-			}
 
+				$sql3 = mysqli_query($db_connection, "select sum(price) as total from transaksi");
+				$data2 = mysqli_fetch_array($sql3);
+
+				$sqlacc = mysqli_query($db_connection, "SELECT COUNT(*) AS jumlahaccept FROM transaksi where status ='Accepted'");
+				$get_sqlacc = mysqli_fetch_array($sqlacc);
+			}
+			
 			while($data = mysqli_fetch_array($sql)){ 
 				?>
 					<tbody><tr>
@@ -50,7 +61,10 @@
 				<?php
 				}
 				?>
+
 			</table>
+			Total data = <?php echo $get_jumlah['jumlah']; ?> data found. (<?php echo $get_sqlacc['jumlahaccept']; ?> accepted)<br>
+			Total income = Rp<?php echo $data2['total']; ?>,-
 	</div>
 <script>
         function sortTable(columnName){
